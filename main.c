@@ -1,3 +1,4 @@
+#include "bmp_config.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,8 +21,6 @@ BitMap_t *createBitMap(FILE *image, int width, int height) {
   for (int i = 0; i < height; i++) {
     bitmap->map[i] = (Pixel_t *)malloc(sizeof(Pixel_t) * width);
   }
-
-  
 
   return 0;
 }
@@ -63,6 +62,8 @@ void printImage(FILE *image, int width, int height, long data_offset,
     printf("\n");
   }
 }
+
+void printImagev2(FILE *image, int width, int height, long data_offset) {}
 
 int main() {
 
