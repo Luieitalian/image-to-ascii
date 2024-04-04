@@ -13,8 +13,7 @@ typedef struct BitMap {
 } BitMap_t;
 
 BitMap_t *createBitMap(FILE *image, BMP_CONFIG_T *bmp_config);
-Pixel_t *createPixel(FILE *image, long offset);
 void hydrateBitMap(BitMap_t *bitmap, FILE *image);
-void printBitmap(BitMap_t *bitmap);
+void printBitMap(BitMap_t *bitmap);
 
 #endif

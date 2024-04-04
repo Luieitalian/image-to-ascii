@@ -1,6 +1,5 @@
 #include "bitmap.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 BitMap_t *createBitMap(FILE *image, BMP_CONFIG_T *bmp_config) {
   BitMap_t *bitmap = (BitMap_t *)malloc(sizeof(BitMap_t));
@@ -21,7 +20,6 @@ BitMap_t *createBitMap(FILE *image, BMP_CONFIG_T *bmp_config) {
 
   hydrateBitMap(bitmap, image);
 
-  // TODO
   return bitmap;
 }
 
@@ -34,22 +32,18 @@ void hydrateBitMap(BitMap_t *bitmap, FILE *image) {
       new_pixel.b = fgetc(image);
       new_pixel.g = fgetc(image);
       new_pixel.r = fgetc(image);
-      printf("i: %d; j: %d\n", i, j);
+
       bitmap->map[i][j] = new_pixel;
     }
     fseek(image, bitmap->bmp_config->optional_padding, SEEK_CUR);
   }
 }
 
-Pixel_t *createPixel(FILE *image, long offset) {
-  Pixel_t *p = (Pixel_t *)malloc(sizeof(Pixel_t));
-
-  fseek(image, offset, SEEK_SET);
-  printf("offset: %02lxh ", offset);
-  p->b = fgetc(image);
-  p->g = fgetc(image);
-  p->r = fgetc(image);
-
-  return p;
+void printBitMap(BitMap_t *bitmap) {
+  for (long i = bitmap->height - 1; i >= 0; i--) {
+    for (long j = 0; j < bitmap->width; j++) {
+      printf("(%d, %d, %d) ", bitmap->map[i][j].r, bitmap->map[i][j].g, bitmap->map[i][j].b);
+    }
+    printf("-- \n\n-- ");
+  }
 }
-void printBitmap(BitMap_t *bitmap) {}
