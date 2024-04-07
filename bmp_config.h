@@ -3,18 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef enum BMP_DIB_TYPE { BITMAPINFOHEADER } BMP_DIB_TYPE_T;
+typedef enum BMP_DIB_TYPE { BITMAPINFOHEADER, BITMAPV5HEADER} BMP_DIB_TYPE_T;
 
 typedef struct BMP_CONFIG {
-  unsigned int width_offset;
-  unsigned int height_offset;
+  unsigned int width;
+  unsigned int height;
   unsigned int pixel_offset;
   unsigned int data_offset;
-  unsigned int optional_padding;
   unsigned int bits_per_pixel_offset;
 } BMP_CONFIG_T;
 
 BMP_CONFIG_T *createEmptyBMPConfig();
-BMP_CONFIG_T *createBMPConfig(BMP_DIB_TYPE_T bmp_dib_type);
+BMP_CONFIG_T *createBMPConfig(FILE* image);
+unsigned int detectDIBType(FILE *image);
 
 #endif
