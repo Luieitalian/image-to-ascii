@@ -1,7 +1,7 @@
 #include "../include/bitmap.h"
 #include <stdio.h>
 
-BitMap_t *createBitMap_t_3(FILE *image, BMP_CONFIG_T *bmp_config) {
+BitMap_t *createBitMap(FILE *image, BMP_CONFIG_T *bmp_config) {
   BitMap_t *bitmap = (BitMap_t *)malloc(sizeof(BitMap_t));
   bitmap->bmp_config = bmp_config;
 
@@ -20,7 +20,7 @@ BitMap_t *createBitMap_t_3(FILE *image, BMP_CONFIG_T *bmp_config) {
 
 void hydrateBitMap(BitMap_t *bitmap, FILE *image) {
   fseek(image, bitmap->bmp_config->bits_per_pixel_offset, SEEK_SET);
-  unsigned int padding = ((fgetc(image) / 8) * bitmap->bmp_config->width) % 4;
+  unsigned int padding = ((fgetc(image) / 8) * bitmap->bmp_config->width) % 4; // get the bits per pixel
 
   fseek(image, bitmap->bmp_config->data_offset, SEEK_SET);
   for (unsigned int i = 0; i < bitmap->bmp_config->height; i++) {
@@ -33,7 +33,7 @@ void hydrateBitMap(BitMap_t *bitmap, FILE *image) {
 
       bitmap->map[i][j] = new_pixel;
     }
-    fseek(image, padding, SEEK_CUR);
+    fseek(image, padding, SEEK_CUR); // move cursor forward for padding
   }
 }
 
@@ -47,7 +47,13 @@ void printBitMap(BitMap_t *bitmap) {
   }
 }
 
-
-void freeBitmap() {
-
+void freeBitmap(BitMap_t *bitmap) {
+  for (unsigned int i = 0; i < bitmap->bmp_config->height; i++) {
+    free(bitmap->map[i]);
+    bitmap->map[i] = NULL;
+  }
+  free(bitmap->map);
+  bitmap->map = NULL;
+  free(bitmap);
+  bitmap = NULL;
 }
