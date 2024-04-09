@@ -36,3 +36,14 @@ void printBrightness_Matrix(Brightness_Matrix_t *br_matrix) {
     }
   }
 }
+
+void freeBrightness_Matrix(Brightness_Matrix_t *br_matrix) {
+  for (unsigned int i = 0; i < br_matrix->height; i++) {
+    free(br_matrix->matrix[i]);
+    br_matrix->matrix[i] = NULL;
+  }
+  free(br_matrix->matrix);
+  br_matrix->matrix = NULL;
+  free(br_matrix);
+  br_matrix = NULL;
+}
