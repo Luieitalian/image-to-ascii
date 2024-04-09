@@ -14,5 +14,6 @@ typedef struct BitMap {
 BitMap_t *createBitMap(FILE *image, BMP_CONFIG_T *bmp_config);
 void hydrateBitMap(BitMap_t *bitmap, FILE *image);
 void printBitMap(BitMap_t *bitmap);
+void freeBitmap(BitMap_t *bitmap);
 
 #endif
