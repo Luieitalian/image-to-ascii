@@ -8,11 +8,10 @@
 
 ### How To
 1. Compile & Link 	
-
 ```
 make compile link
 ```
-2. Run without the angle brackets
+2. Run without the angle brackets (imagename without the .bmp extension)
 ```
 make run img=<imagename>
 ```
@@ -21,9 +20,10 @@ make run img=<imagename>
 
 - [x] Grayscale
 - [x] Creating bitmaps
+- [x] Free memory after allocating
 - [ ] Support other raster image types
 - [ ] Support image scaling
-- [ ] Free memory after allocating
+- [ ] Support exporting the image
 
 ### Restrictions
 - These restrictions are temporary.
