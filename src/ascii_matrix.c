@@ -35,8 +35,20 @@ void printASCII_Matrix(ASCII_Matrix_t *ascii_matrix) {
     printf("-- \n\n-- ");
     for (long j = 0; j < ascii_matrix->width; j++) {
       for (short k = 0; k < ascii_matrix->height / 40; k++) {
+        // print the same char for (matrix height / 40) times
         printf("%c", ascii_matrix->matrix[i][j]);
       }
     }
   }
+}
+
+void freeASCII_Matrix(ASCII_Matrix_t *ascii_matrix) {
+  for (unsigned int i = 0; i < ascii_matrix->height; i++) {
+    free(ascii_matrix->matrix[i]);
+    ascii_matrix->matrix[i] = NULL;
+  }
+  free(ascii_matrix->matrix);
+  ascii_matrix->matrix = NULL;
+  free(ascii_matrix);
+  ascii_matrix = NULL;
 }

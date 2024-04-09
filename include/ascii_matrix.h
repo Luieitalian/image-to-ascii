@@ -12,5 +12,6 @@ typedef struct ASCII_Matrix {
 char convertToASCII(int brightness);
 ASCII_Matrix_t *getASCII_Matrix(Brightness_Matrix_t *br_matrix);
 void printASCII_Matrix(ASCII_Matrix_t *ascii_matrix);
+void freeASCII_Matrix(ASCII_Matrix_t *ascii_matrix);
 
 #endif
