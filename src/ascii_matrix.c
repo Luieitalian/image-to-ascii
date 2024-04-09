@@ -1,8 +1,8 @@
 #include "../include/ascii_matrix.h"
 #include <stdlib.h>
 
-char convertToASCII(int brightness) {
-  char ascii = gscale[(int)(brightness * 9.5f) / 255];
+char convertToASCII(unsigned short brightness) {
+  char ascii = gscale[(unsigned short)(brightness * 9.5f) / 255];
   return ascii;
 }
 

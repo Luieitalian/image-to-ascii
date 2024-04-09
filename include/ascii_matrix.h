@@ -9,7 +9,7 @@ typedef struct ASCII_Matrix {
   unsigned int height;
 } ASCII_Matrix_t;
 
-char convertToASCII(int brightness);
+char convertToASCII(unsigned short brightness);
 ASCII_Matrix_t *getASCII_Matrix(Brightness_Matrix_t *br_matrix);
 void printASCII_Matrix(ASCII_Matrix_t *ascii_matrix);
 void freeASCII_Matrix(ASCII_Matrix_t *ascii_matrix);
