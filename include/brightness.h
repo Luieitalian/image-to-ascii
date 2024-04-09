@@ -17,5 +17,6 @@ typedef struct Brightness_Matrix {
 int calcBrightness(Pixel_t *pixel);
 Brightness_Matrix_t *getBrightness_Matrix(BitMap_t *bitmap);
 void printBrightness_Matrix(Brightness_Matrix_t *br_matrix);
+void freeBrightness_Matrix(Brightness_Matrix_t *br_matrix);
 
 #endif
