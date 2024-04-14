@@ -9,7 +9,7 @@ compile:
 	gcc -c src/utils.c -o lib/utils.o
 
 link:
-	gcc lib/bmp_config.o lib/bitmap.o lib/brightness.o lib/ascii_matrix.o lib/utils.o lib/main.o -o bin/main.exe
+	gcc lib/bmp_config.o lib/bitmap.o lib/brightness.o lib/ascii_matrix.o lib/utils.o lib/main.o -o bin/main.exe -lm
 
 run:
 	./bin/main.exe $(img).bmp
