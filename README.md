@@ -3,10 +3,10 @@
 ### Contents
 
 - [How To Use](#how-to)
-- [Restrictions](#restrictions)
 - [TODOs](#TODOs)
+- [Restrictions](#restrictions)
 
-### How To
+### How To Use
 1. Compile & Link 	
 ```
 make compile link
