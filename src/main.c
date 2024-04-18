@@ -1,5 +1,4 @@
-#include "include/utils.h"
-#include <stdio.h>
+#include "../include/utils.h"
 #include <string.h>
 
 int main(int argc, char **argv) {

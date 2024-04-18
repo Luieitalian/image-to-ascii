@@ -1,17 +1,24 @@
-all: compile link run
+CC=gcc
+CCFLAGS=-O2 -DNDEBUG
+LDFLAGS=-lm
+SRC=src
+BIN=bin/main
+OBJ=lib
+SRCS=$(wildcard $(SRC)/*.c)
+OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-compile:
-	gcc -c main.c -o lib/main.o
-	gcc -c src/bmp_config.c -o lib/bmp_config.o
-	gcc -c src/bitmap.c -o lib/bitmap.o
-	gcc -c src/brightness.c -o lib/brightness.o
-	gcc -c src/ascii_matrix.c -o lib/ascii_matrix.o
-	gcc -c src/utils.c -o lib/utils.o
+all: $(BIN)
 
-link:
-	gcc lib/bmp_config.o lib/bitmap.o lib/brightness.o lib/ascii_matrix.o lib/utils.o lib/main.o -o bin/main.exe -lm
+$(BIN): $(OBJS) $(OBJ)
+	$(CC) $(CCFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
-run:
-	./bin/main.exe $(img).bmp
+$(OBJ)/%.o: $(SRC)/%.c $(OBJ)
+	$(CC) $(CCFLAGS) -c $< -o $@
 
-.PHONY: all compile link run
+$(OBJ):
+	mkdir -p $(OBJ)
+
+run: $(BIN)
+	./bin/main $(img).bmp
+
+.PHONY: all
