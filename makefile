@@ -10,6 +10,7 @@ OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 all: $(BIN)
 
 $(BIN): $(OBJS) $(OBJ)
+	mkdir -p bin
 	$(CC) $(CCFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
 $(OBJ)/%.o: $(SRC)/%.c $(OBJ)
