@@ -9,11 +9,11 @@
 ### How To Use
 1. Compile & Link 	
 ```
-make compile link
+$ make
 ```
 2. Run without the angle brackets (imagename without the .bmp extension)
 ```
-make run img=<imagename>
+$ make run img=<imagename>
 ```
 
 ### TODOs
